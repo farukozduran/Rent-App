@@ -40,7 +40,7 @@ namespace Rent.App.Controllers
         {
             _context.Add(customer);
             _context.SaveChanges();
-            return View();
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -54,7 +54,7 @@ namespace Rent.App.Controllers
         {
             _context.Update(customer);
             _context.SaveChanges();
-            return View();
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public IActionResult Delete(int id)

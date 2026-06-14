@@ -39,7 +39,7 @@ namespace Rent.App.Controllers
         {
             _context.Add(car);
             _context.SaveChanges();
-            return View();
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -53,7 +53,7 @@ namespace Rent.App.Controllers
         {
             _context.Update(car);
             _context.SaveChanges();
-            return View();
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public IActionResult Delete(int id)
