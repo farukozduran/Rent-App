@@ -12,7 +12,7 @@ namespace Rent.App.Controllers
             _context = context;
         }
 
-        public IActionResult Index(string search)
+        public IActionResult Index(string search, bool isAdmin = false)
         {
             var result = _context.Cars.AsQueryable();
 
@@ -24,6 +24,8 @@ namespace Rent.App.Controllers
                     x.Plate.Contains(search)
                 );
             }
+
+            ViewData["IsAdmin"] = isAdmin;
 
             ViewData["CurrentSearch"] = search;
             return View(result.ToList());

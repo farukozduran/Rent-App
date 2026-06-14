@@ -61,14 +61,9 @@
 
                         <a class="collapse-item"
                            asp-controller="Customers"
-                           asp-action="Index">
-                            Edit Customers
-                        </a>
-
-                        <a class="collapse-item"
-                           asp-controller="Customers"
-                           asp-action="Index">
-                            Delete Customers
+                           asp-action="Index"
+                           asp-route-isAdmin="true">
+                            Edit / Delete Customers
                         </a>
                     </div>
                 </div>
@@ -89,14 +84,9 @@
 
                         <a class="collapse-item"
                            asp-controller="Cars"
-                           asp-action="Index">
-                            Edit Cars
-                        </a>
-
-                        <a class="collapse-item"
-                           asp-controller="Cars"
-                           asp-action="Index">
-                            Delete Cars
+                           asp-action="Index"
+                           asp-route-isAdmin="true">
+                            Edit / Delete Cars
                         </a>
                     </div>
                 </div>
@@ -117,14 +107,9 @@
 
                         <a class="collapse-item"
                            asp-controller="Rentals"
-                           asp-action="Index">
-                            Edit Rentals
-                        </a>
-
-                        <a class="collapse-item"
-                           asp-controller="Rentals"
-                           asp-action="Index">
-                            Delete Rentals
+                           asp-action="Index"
+                           asp-route-isAdmin="true">
+                            Edit / Delete Rentals
                         </a>
                     </div>
                 </div>

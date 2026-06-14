@@ -12,7 +12,7 @@ namespace Rent.App.Controllers
             _context = context;
         }
 
-        public IActionResult Index(string search)
+        public IActionResult Index(string search, bool isAdmin = false)
         {
             var result = _context.Customers.AsQueryable();
 
@@ -25,7 +25,7 @@ namespace Rent.App.Controllers
                     (x.Email != null && x.Email.Contains(search))
                 );
             }
-
+            ViewData["IsAdmin"] = isAdmin;
             ViewData["CurrentSearch"] = search;
             return View(result.ToList());
         }

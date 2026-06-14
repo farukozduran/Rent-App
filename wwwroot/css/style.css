@@ -104,11 +104,12 @@ body {
 }
 /* IMAGE */
 .hero-img {
-  padding: 10px 18px;
-  position: relative;
-  width: 300px;
-  left: 80px;
-  z-index: 2;
+    width: 115%;
+    max-width: none;
+    border-radius: 28px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+    object-fit: cover;
+    transform: translateX(20px);
 }
 
 /* RATING BOX */
