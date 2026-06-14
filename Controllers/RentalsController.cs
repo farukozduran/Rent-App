@@ -14,13 +14,26 @@ namespace Rent.App.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string search)
         {
             var result = _context.Rentals
                 .Include(x => x.Customer)
                 .Include(x => x.Car)
-                .ToList();
-            return View(result);
+                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                result = result.Where(x =>
+                    x.Customer.CustomerName.Contains(search) ||
+                    x.Customer.CustomerSurname.Contains(search) ||
+                    x.Car.Brand.Contains(search) ||
+                    x.Car.Model.Contains(search) ||
+                    x.Car.Plate.Contains(search)
+                );
+            }
+
+            ViewData["CurrentSearch"] = search;
+            return View(result.ToList());
         }
 
         [HttpGet]
@@ -61,8 +74,29 @@ namespace Rent.App.Controllers
         public IActionResult Edit(int id)
         {
             var result = _context.Rentals.Find(id);
-            ViewData["CarId"] = new SelectList(_context.Cars, "CarId", "Brand", "Model");
-            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "FirstName", "LastName");
+
+            ViewData["CarId"] = new SelectList(
+                _context.Cars.Select(x => new
+                {
+                    x.CarId,
+                    CarInfo = x.Brand + " " + x.Model
+                }),
+                "CarId",
+                "CarInfo",
+                result.CarId
+            );
+
+            ViewData["CustomerId"] = new SelectList(
+                _context.Customers.Select(x => new
+                {
+                    x.CustomerId,
+                    CustomerInfo = x.CustomerName + " " + x.CustomerSurname
+                }),
+                "CustomerId",
+                "CustomerInfo",
+                result.CustomerId
+            );
+
             return View(result);
         }
 

@@ -12,10 +12,22 @@ namespace Rent.App.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string search)
         {
-            var result = _context.Customers.ToList();
-            return View(result);
+            var result = _context.Customers.AsQueryable();
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                result = result.Where(x =>
+                    x.CustomerName.Contains(search) ||
+                    x.CustomerSurname.Contains(search) ||
+                    (x.Phone != null && x.Phone.Contains(search)) ||
+                    (x.Email != null && x.Email.Contains(search))
+                );
+            }
+
+            ViewData["CurrentSearch"] = search;
+            return View(result.ToList());
         }
 
         [HttpGet]

@@ -12,10 +12,21 @@ namespace Rent.App.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string search)
         {
-            var result = _context.Cars.ToList();
-            return View(result);
+            var result = _context.Cars.AsQueryable();
+
+            if(!string.IsNullOrEmpty(search))
+            {
+                result = result.Where(x =>
+                    x.Brand.Contains(search) ||
+                    x.Model.Contains(search) ||
+                    x.Plate.Contains(search)
+                );
+            }
+
+            ViewData["CurrentSearch"] = search;
+            return View(result.ToList());
         }
 
         [HttpGet]

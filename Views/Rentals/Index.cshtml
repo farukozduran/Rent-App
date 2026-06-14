@@ -9,6 +9,23 @@
         <h2 class="fw-bold">Kiralama Kayıtları</h2>
         <a asp-action="Create" class="btn btn-success">Yeni Kiralama</a>
     </div>
+    <form asp-action="Index" method="get" class="mb-4">
+        <div class="input-group">
+            <input type="text"
+                   name="search"
+                   value="@ViewData["CurrentSearch"]"
+                   class="form-control"
+                   placeholder="Search by customer, car or plate..." />
+
+            <button type="submit" class="btn btn-success">
+                Search
+            </button>
+
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                Clear
+            </a>
+        </div>
+    </form>
 
     <div class="row g-4">
         @foreach (var item in Model)

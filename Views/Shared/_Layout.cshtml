@@ -38,36 +38,40 @@
     <body>
         <!--header section -->
         <header>
-            <!-- Navbar (اختياري) -->
+            <!-- Navbar -->
             <nav class="navbar main-nav fixed-top py-3 navbar-expand-lg">
                 <div
                     class="container d-flex justify-content-between align-items-center">
 
                     <!-- Logo -->
                     <div class="d-flex align-items-center gap-2 brand-logo">
-                        <i class="fa-solid fa-tooth"></i>
+                        <i class="fa-solid fa-car-side"></i>
                         <h4 class="fw-bold m-0 Logo">Rent a Car</h4>
                     </div>
 
                     <!-- Desktop Menu (visible on large screens only) -->
                     <ul class="nav d-none d-lg-flex">
-                        <li class="nav-item"><a class="nav-link "
-                                href="~/index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link "
-                                href="~/Whyus.html">Why Us</a></li>
-                        <li class="nav-item"><a class="nav-link "
-                                href="~/service.html">Services</a></li>
-                        <li class="nav-item"><a class="nav-link "
-                                href="~/team.html">Team</a></li>
-                        <li class="nav-item"><a class="nav-link"
-                                href="~/Pricing.html">Pricing</a></li>
-                        <li class="nav-item"><a class="nav-link"
-                                href="~/DentalSolutions.html">Solutions</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Cars" asp-action="Index">Cars</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Customers" asp-action="Index">Customers</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Rentals" asp-action="Index">Rentals</a>
+                        </li>
                     </ul>
 
-                    <a href="#"
-                        class="btn px-4 d-none d-lg-block">Book
-                        Now</a>
+                    <a asp-controller="Rentals" asp-action="Create"
+                       class="btn px-4 d-none d-lg-block">
+                        Rent Now
+                    </a>
 
                     <!-- Burger Button (Mobile Only) -->
                     <button class="navbar-toggler d-lg-none"
@@ -98,21 +102,26 @@
                 <div class="offcanvas-body">
 
                     <ul class="navbar-nav gap-2">
+                        <li>
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
 
-                        <li><a class="nav-link" href="~/index.html">Home</a></li>
-                        <li><a class="nav-link" href="~/Whyus.html">Why
-                                Us</a></li>
-                        <li><a class="nav-link"
-                                href="~/service.html">Services</a></li>
-                        <li><a class="nav-link" href="~/team.html">Team</a></li>
-                        <li><a class="nav-link"
-                                href="~/Pricing.html">Pricing</a></li>
-                        <li><a class="nav-link"
-                                href="~/DentalSolutions.html">Solutions</a></li>
+                        <li>
+                            <a class="nav-link" asp-controller="Cars" asp-action="Index">Cars</a>
+                        </li>
 
+                        <li>
+                            <a class="nav-link" asp-controller="Customers" asp-action="Index">Customers</a>
+                        </li>
+
+                        <li>
+                            <a class="nav-link" asp-controller="Rentals" asp-action="Index">Rentals</a>
+                        </li>
                     </ul>
 
-                    <a class="btn w-100 mt-3">Book Now</a>
+                    <a asp-controller="Rentals" asp-action="Create" class="btn w-100 mt-3">
+                        Rent Now
+                    </a>
 
                 </div>
 
@@ -127,26 +136,29 @@
                     <div class="col-md-6">
 
                         <h1 class="hero-title">
-                            Professional & Modern Dental Care
+                            Fast, Reliable & Comfortable Car Rental
                         </h1>
 
                         <p class="hero-desc">
-                            High-quality dental treatments, advanced technology,
-                            and a caring
-                            medical team — helping you achieve a healthy,
-                            confident smile.
+                            Choose the right car for your journey. 
+                            Manage vehicles, customers and rental records 
+                            easily from one modern system.
                         </p>
 
                         <div class="d-flex gap-3 mt-3">
-                            <a class="btn hero-btn px-4">View
-                                Services</a>
+                            <a asp-controller="Cars" asp-action="Index" class="btn hero-btn px-4">
+                                View Cars
+                            </a>
+
+                            <a asp-controller="Rentals" asp-action="Create" class="btn btn-outline-dark px-4">
+                                Rent Now
+                            </a>
                         </div>
 
                         <!-- Rating Box -->
                         <div class="hero-rating mt-4">
-                            <span class="rating-value">4.9★</span>
-                            <span class="rating-text">Patient Satisfaction
-                                Rating</span>
+                            <span class="rating-value">4.8★</span>
+                            <span class="rating-text">Customer Satisfaction Rating</span>
                         </div>
 
                     </div>
@@ -165,11 +177,10 @@
         <section class="container my-5" data-aos="fade-up">
 
             <div class="text-center mb-4">
-                <span class="blog-tag">Our Blog</span>
-                <h2 class="fw-bold">Latest Blog & Articles</h2>
+                <span class="blog-tag">Rental Tips</span>
+                <h2 class="fw-bold">Latest Car Rental Articles</h2>
                 <p class="text-muted">
-                    We share knowledge & helpful dental care tips for our
-                    patients.
+                    Useful tips about car rental, vehicle selection and safe driving.
                 </p>
             </div>
 
@@ -183,18 +194,11 @@
                             class="blog-img">
 
                         <div class="blog-content">
-                            <h5 class="fw-bold">
-                                5 Reasons Your Children Need Regular Dental
-                                CheckUps
-                            </h5>
-
-                            <small class="text-muted">March 28, 2024</small>
-
-                            <p>
-                                Regular check-ups help prevent cavities and
-                                improve long-term dental health.
+                            <h5 class="fw-bold">How to Choose the Right Car for Your Trip</h5>
+                            <p>Choose the best vehicle depending on distance, 
+                                luggage and comfort needs.
                             </p>
-
+                            <small class="text-muted">March 28, 2024</small>
                             <a href="#" class="read-link">Read More →</a>
                         </div>
 
@@ -210,20 +214,11 @@
                             class="blog-img">
 
                         <div class="blog-content">
-                            <h5 class="fw-bold">
-                                Everything You Need To Know About a Dead Tooth
-                            </h5>
-
+                            <h5 class="fw-bold">Daily or Weekly Rental: Which One is Better?</h5>
+                            <p>Compare rental periods and find the most cost-effective option.</p>
                             <small class="text-muted">March 28, 2024</small>
-
-                            <p>
-                                Learn the symptoms and treatment options for
-                                nerve-damaged teeth.
-                            </p>
-
                             <a href="#" class="read-link">Read More →</a>
                         </div>
-
                     </div>
                 </div>
 
@@ -235,18 +230,9 @@
                             class="blog-img">
 
                         <div class="blog-content">
-                            <h5 class="fw-bold">
-                                Everything You Want To Know About Cosmetic
-                                Dentistry
-                            </h5>
-
+                            <h5 class="fw-bold">Important Things Before Renting a Car</h5>
+                            <p>Check plate, fuel status, insurance and delivery conditions before renting.</p>
                             <small class="text-muted">March 28, 2024</small>
-
-                            <p>
-                                Veneers, whitening and smile design — discover
-                                how they work.
-                            </p>
-
                             <a href="#" class="read-link">Read More →</a>
                         </div>
 
@@ -261,17 +247,9 @@
                             class="blog-img">
 
                         <div class="blog-content">
-                            <h5 class="fw-bold">
-                                What You Need to Know About Wisdom Teeth
-                            </h5>
-
+                            <h5 class="fw-bold">Why Customer Records Matter in Rental Systems</h5>
+                            <p>Organized customer data helps manage rentals faster and safer.</p>
                             <small class="text-muted">March 27, 2024</small>
-
-                            <p>
-                                When extraction is necessary and how to reduce
-                                recovery time.
-                            </p>
-
                             <a href="#" class="read-link">Read More →</a>
                         </div>
 
@@ -291,14 +269,14 @@
                     <div class="col-md-3">
                         <i class="bi bi-people stats-icon"></i>
                         <h3 class="counter" data-target="1452">0</h3>
-                        <p class="stats-label">Happy Patients</p>
+                        <p class="stats-label">Happy Customers</p>
                     </div>
 
                     <!-- Online Appointments -->
                     <div class="col-md-3">
                         <i class="bi bi-file-earmark-text stats-icon"></i>
                         <h3 class="counter" data-target="342">0</h3>
-                        <p class="stats-label">Online Appointments</p>
+                        <p class="stats-label">Completed Rentals</p>
                     </div>
 
                     <!-- Years of Experience -->
@@ -312,7 +290,7 @@
                     <div class="col-md-3">
                         <i class="bi bi-person-badge stats-icon"></i>
                         <h3 class="counter" data-target="20">0</h3>
-                        <p class="stats-label">Doctors & Staff</p>
+                        <p class="stats-label">Available Cars</p>
                     </div>
 
                 </div>
@@ -327,9 +305,8 @@
                 <div
                     class="d-flex justify-content-between align-items-center flex-wrap">
 
-                    <div
-                        class="d-flex align-items-center gap-2 logo">
-                        <i class="fa-solid fa-tooth"></i>
+                    <div class="d-flex align-items-center gap-2 logo">
+                        <i class="fa-solid fa-car-side"></i>
                         <strong> Rent a Car</strong>
                     </div>
 
