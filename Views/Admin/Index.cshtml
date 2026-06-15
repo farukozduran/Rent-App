@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="mt-3">
-                    <a asp-controller="Customers" asp-action="Index" class="btn btn-primary btn-sm">
+                    <a asp-controller="Customers" asp-action="Index" asp-route-isAdmin="true" class="btn btn-primary btn-sm">
                         Manage Customers
                     </a>
                 </div>
@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="mt-3">
-                    <a asp-controller="Cars" asp-action="Index" class="btn btn-success btn-sm">
+                    <a asp-controller="Cars" asp-action="Index" asp-route-isAdmin="true" class="btn btn-success btn-sm">
                         Manage Cars
                     </a>
                 </div>
@@ -94,7 +94,7 @@
                 </div>
 
                 <div class="mt-3">
-                    <a asp-controller="Rentals" asp-action="Index" class="btn btn-warning btn-sm">
+                    <a asp-controller="Rentals" asp-action="Index" asp-route-isAdmin="true" class="btn btn-warning btn-sm">
                         Manage Rentals
                     </a>
                 </div>
